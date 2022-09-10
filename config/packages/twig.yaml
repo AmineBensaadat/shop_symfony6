@@ -1,0 +1,13 @@
+twig:
+    default_path: '%kernel.project_dir%/src'
+    paths:
+        # ADMIN
+        'src/Backoffice/DashboardBundle/Templates': 'AdminDashboard'
+        'src/Backoffice/ThemeBundle/Templates': 'BoTheme'
+        'src/Backoffice/SettingsBundle/Templates': 'SettingsBundleTheme'
+        'src/Backoffice/SecurityBundle/Templates': 'SecurityBundleTheme'
+        'src/Backoffice/CommonBundle/Templates': 'CommonBundleTheme'
+        'src/Backoffice/UserBundle/Templates': 'UserBundleTheme'
+when@test:
+    twig:
+        strict_variables: true

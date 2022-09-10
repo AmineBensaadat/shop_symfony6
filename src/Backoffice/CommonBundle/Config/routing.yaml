@@ -1,0 +1,7 @@
+Backoffice_CommonBundle_languageSwitcher:
+  path: /admin/dashboard/lang
+  controller: App\Backoffice\CommonBundle\Controller\IndexController::SwitchLang
+
+Backoffice_CommonBundle_Settings:
+  path: /admin/settings
+  controller: App\Backoffice\CommonBundle\Controller\IndexController::Settings

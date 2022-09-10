@@ -1,0 +1,7 @@
+BoUserBundle_profile:
+  path: /admin/users/edit
+  controller: App\\UserBundle\Controller\UserController::edit
+
+BoUserBundle_register:
+  path: /admin/register
+  controller: App\\UserBundle\Controller\RegistrationController::register

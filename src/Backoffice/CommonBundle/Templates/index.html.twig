@@ -1,0 +1,43 @@
+{% extends '@AdminTheme/base.html.twig' %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-xxl-6">
+            <h5 class="mb-3">{{ 'settings'|trans|capitalize }}</h5>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link mb-2 active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">{{ 'language'|trans|capitalize }}</a>
+                            </div>
+                        </div><!-- end col -->
+                        <div class="col-md-9">
+                            <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                        {{ form_start(formLang) }}
+                                        <div class="row row-cols-lg-auto g-3 align-items-center">
+                                            <div class="col-12">
+                                                {{ form_label(formLang.locale, null, {'label_attr': {'class': 'visually-hidden'}}) }}
+                                                {{ form_widget(formLang.locale, {'attr': {'class': 'form-select'}}) }}
+                                            </div>
+                                            
+                                            <div class="col-12">
+                                                {{ form_widget(formLang.save, {
+                                                    'attr': {'class': 'btn btn-primary'},
+                                                    'label': 'save'
+                                                    }) }}
+                                            </div>
+                                        </div>
+                                    {{ form_end(formLang) }}
+
+                                </div>
+                            </div>
+                        </div><!--  end col -->
+                    </div><!--end row-->
+                </div><!-- end card-body -->
+            </div><!-- end card -->
+        </div><!--end col-->
+    </div><!--end row-->
+  
+{% endblock %}

@@ -1,0 +1,3 @@
+BackofficeDashboardBundle_DashboardIndex:
+  path: /admin/dashboard
+  controller: App\Backoffice\DashboardBundle\Controller\DashboardController::index

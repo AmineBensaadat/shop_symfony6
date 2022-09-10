@@ -1,0 +1,6 @@
+parameters:
+    locale: 'en'
+services:
+    settings_service:
+            class: App\Backoffice\CommonBundle\Services\SettingsService
+            public: true
