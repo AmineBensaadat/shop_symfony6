@@ -8,6 +8,9 @@ twig:
         'src/Backoffice/SecurityBundle/Templates': 'SecurityBundleTheme'
         'src/Backoffice/CommonBundle/Templates': 'CommonBundleTheme'
         'src/Backoffice/UserBundle/Templates': 'UserBundleTheme'
+        'src/Backoffice/ProductsBundle/Templates': 'BoProductsBundle'
+        
+
 
         # Front
         'src/Front/ThemeBundle/Templates': 'FrontThemeBundle'

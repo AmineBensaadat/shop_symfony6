@@ -20,6 +20,7 @@ return [
     App\Backoffice\CommonBundle\BoCommonBundle::class => ['all' => true],
     App\Backoffice\SecurityBundle\BoSecurityBundle::class => ['all' => true],
     App\Backoffice\UserBundle\BoUserBundle::class => ['all' => true],
+    App\Backoffice\ProductsBundle\BoProductsBundle::class => ['all' => true],
 
     // Front Bundles
     App\Front\ThemeBundle\FrontThemeBundle::class => ['all' => true],

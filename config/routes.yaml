@@ -11,4 +11,7 @@ BackofficeSettingsBundle:
 BackofficeCommonBundle:
     resource: ../src/Backoffice/CommonBundle/Config/routing.yaml
 
+BackofficeProductsBundle:
+    resource: ../src/Backoffice/ProductsBundle/Config/routing.yaml
+
     

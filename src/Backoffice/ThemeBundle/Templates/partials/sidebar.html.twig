@@ -45,6 +45,20 @@
                     </div>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#" data-bs-toggle="collapse" role="button"
+                        aria-expanded="false" aria-controls="sidebarIcons">
+                        <i class="bx bx-tone"></i> <span data-key="t-icons">{{ 'products'|trans|capitalize }}</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarIcons">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{ path('Backoffice_ProdutsBundle_index') }}" class="nav-link" data-key="t-remix">{{ 'all_products'|trans|capitalize }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
             </ul>
         </div>

@@ -1,0 +1,3 @@
+Backoffice_ProdutsBundle_index:
+  path: /admin/products/list
+  controller: App\Backoffice\ProductsBundle\Controller\IndexController::index
