@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+{{ include('@FrontThemeBundle/head.html.twig') }}
+
+
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+	{{ include('@FrontThemeBundle/header.html.twig') }}
+
+	
+	<div class="fs_menu_overlay"></div>
+	{{ include('@FrontThemeBundle/mobile_menu.html.twig') }}
+
+	<!-- Slider -->
+	{{ include('@FrontThemeBundle/slider.html.twig') }}
+	
+
+	<!-- Banner -->
+	{{ include('@FrontThemeBundle/banner.html.twig') }}
+
+
+	<!-- New Arrivals -->
+	{{ include('@FrontThemeBundle/new_arrivals.html.twig') }}
+	
+
+	<!-- Deal of the week -->
+	{{ include('@FrontThemeBundle/deal_ofthe_week.html.twig') }}
+
+	<!-- Best Sellers -->
+	{{ include('@FrontThemeBundle/best_sellers.html.twig') }}
+
+	<!-- Benefit -->
+
+	<div class="benefit">
+		<div class="container">
+			<div class="row benefit_row">
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>free shipping</h6>
+							<p>Suffered Alteration in Some Form</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>cach on delivery</h6>
+							<p>The Internet Tend To Repeat</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>45 days return</h6>
+							<p>Making it Look Like Readable</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 benefit_col">
+					<div class="benefit_item d-flex flex-row align-items-center">
+						<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+						<div class="benefit_content">
+							<h6>opening all week</h6>
+							<p>8AM - 09PM</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Blogs -->
+	{{ include('@FrontThemeBundle/blogs.html.twig') }}
+
+	<!-- Newsletter -->
+	{{ include('@FrontThemeBundle/newsletter.html.twig') }}
+
+	<!-- Footer -->
+	{{ include('@FrontThemeBundle/footer.html.twig') }}
+
+</div>
+<!-- Footer -->
+{{ include('@FrontThemeBundle/footer_scripts.html.twig') }}
+</body>
+
+</html>
