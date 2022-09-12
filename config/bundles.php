@@ -19,5 +19,9 @@ return [
     App\Backoffice\SettingsBundle\BoSettingsBundle::class => ['all' => true],
     App\Backoffice\CommonBundle\BoCommonBundle::class => ['all' => true],
     App\Backoffice\SecurityBundle\BoSecurityBundle::class => ['all' => true],
-    App\Backoffice\UserBundle\BoUserBundle::class => ['all' => true]
+    App\Backoffice\UserBundle\BoUserBundle::class => ['all' => true],
+
+    // Front Bundles
+    App\Front\ThemeBundle\FrontThemeBundle::class => ['all' => true],
+
 ];

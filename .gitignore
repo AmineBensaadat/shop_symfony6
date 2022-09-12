@@ -20,3 +20,5 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 /.vscode/settings.json
+
+/assetic_style_my.bat
