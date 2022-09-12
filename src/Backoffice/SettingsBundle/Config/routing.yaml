@@ -1,3 +1,3 @@
 SettingsBundle_SettingsIndex:
   path: /admin/dashboard/brands
-  controller: App\\SettingsBundle\Controller\BrandController::index
+  controller: App\Backoffice\SettingsBundle\Controller\BrandController::index

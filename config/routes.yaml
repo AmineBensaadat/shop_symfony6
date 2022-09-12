@@ -4,3 +4,11 @@ controllers:
 
 BackofficeUserBundle:
     resource: ../src/Backoffice/UserBundle/Config/routing.yaml
+
+BackofficeSettingsBundle:
+    resource: ../src/Backoffice/SettingsBundle/Config/routing.yaml
+
+BackofficeCommonBundle:
+    resource: ../src/Backoffice/CommonBundle/Config/routing.yaml
+
+    
