@@ -1,3 +1,7 @@
 Backoffice_ProdutsBundle_index:
   path: /admin/products/list
   controller: App\Backoffice\ProductsBundle\Controller\IndexController::index
+
+Backoffice_ProdutsBundle_list_products:
+  path: /admin/products/list_products
+  controller: App\Backoffice\ProductsBundle\Api\Controller\IndexController::listProducts

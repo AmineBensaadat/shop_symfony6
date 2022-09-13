@@ -8,7 +8,7 @@
     <link href="../../../bundles/botheme/libs/jsvectormap/css/jsvectormap.min.css" rel="stylesheet" type="text/css" />
 
     <!--Swiper slider css-->
-    <link href="../../../bundles/botheme//libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../../bundles/botheme/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
     {{ include('@BoTheme/partials/head-css.html.twig') }}
 
@@ -62,6 +62,27 @@
 
     <!-- App js -->
     <script src="../../../bundles/Botheme/js/app.js"></script>
+
+    <!-- Webix files -->
+	<script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        webix.ui(
+                    {
+                        height: 600, 
+                        view: "datatable",
+                         columns:[
+                            { id:"id",	header:"", css:"rank"},
+                            { id:"title",	header:"Film title", fillspace: true },
+                            { id:"year",	header:"Released"},
+                            { id:"votes",	header:"Votes"}
+                        ],
+                        autoheight:true,
+                        scroll: "auto",
+                        url:"https://127.0.0.1:8000/admin/products/list_products",
+                        container: "content1"
+                    }
+            );
+    </script>
 </body>
 
 </html>
