@@ -66,23 +66,42 @@
     <!-- Webix files -->
 	<script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
     <script>
-        webix.ui(
-                    {
-                        autoheight:true,
-                        view: "datatable",
-                         columns:[
-                            { id:"id", header:"Id", css:"rank"},
-                            { id:"name", header:"Name"},
-                            { id:"qty", header:"Qty"},
-                            { id:"description", header:"description", fillspace: true},
-                            
-                        ],
-                        autoheight:true,
-                        scroll: "auto",
-                        url:"https://127.0.0.1:8000/admin/products/list_products",
-                        container: "content1"
-                    }
-            );
+            var grid = {
+            id:"grid",
+            view:"datatable",
+            columns:[
+                    { id:"id", header:[ "ID", { content:"numberFilter" } ], css:"rank"},
+                    { id:"name", header:[ "Name", { content:"textFilter" } ] },
+                    { id:"qty",  header:[ "Qty", { content:"numberFilter" } ]},
+                    { id:"description", header:[ "description", { content:"textFilter" } ], fillspace: true},
+                    
+                ],
+            select:"cell",
+            autoheight:true,
+            scroll:false,
+            pager:"pagerA",
+            url:"https://127.0.0.1:8000/admin/products/list_products"
+            };
+
+            var pagerA = {
+            view:"pager",
+            id:"pagerA",
+            template:"{common.prev()} {common.pages()} {common.next()}",
+            size:10,
+            group:5
+            };
+
+            webix.ready(function(){
+            webix.ui({
+                container:"mainView",
+                borderless:true,
+                id:"demo", 
+                type:"clean", rows:[
+                grid,
+                pagerA,
+                ]
+            });
+        });
     </script>
 </body>
 
