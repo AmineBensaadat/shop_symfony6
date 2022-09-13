@@ -2,48 +2,28 @@
 
 namespace App\Backoffice\ProductsBundle\Api\Controller;
 
+use App\Entity\Products;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class IndexController  extends AbstractController {
     
-    public function listProducts(){        
+    public function __construct(EntityManagerInterface $em, TranslatorInterface $translator)
+    {
+        $this->em = $em;
+        $this->translator = $translator;
+    }
+    public function listProducts(){ 
+        // get all products
+        $products = $this->em->getRepository(Products::class)->getAllPoroducts();
+
         return new JsonResponse(
             [
             'code' => 'SUCCESS', 
             'message' => 'return data',
-            'data' => array(
-                array(
-                    'id' => 1,
-                    'first_name' => 'bensaadat',
-                    'last_name' => 'amine',
-                    'gender' => 31,
-                    'phone' => '0624681853',
-                    'cin' => 'AE36826',
-                    'adress' => 'Hey errahma sect E',
-                    'city' => 'Salé'
-                ),
-                array(
-                    'id' => 2,
-                    'first_name' => 'bensaadat',
-                    'last_name' => 'mourad',
-                    'gender' => 23,
-                    'phone' => '0666391857',
-                    'cin' => 'AB20888',
-                    'adress' => 'Hey errahma sect E',
-                    'city' => 'Rabat'
-                ),
-                array(
-                    'id' => 3,
-                    'first_name' => 'karim',
-                    'last_name' => 'khadija',
-                    'gender' => 27,
-                    'phone' => '0686391852',
-                    'cin' => 'AC20981',
-                    'adress' => 'derb ghalef',
-                    'city' => 'Casablanca'
-                )
-            )
+            'data' => $products
             ]
             ,  200);
      }

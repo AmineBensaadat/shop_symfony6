@@ -39,6 +39,16 @@ class ProductsRepository extends ServiceEntityRepository
         }
     }
 
+    public function getAllPoroducts(){
+        $query = $this->getEntityManager()->createQuery(
+            'SELECT P.name, P.id, P.description, P.qty
+            FROM App\Entity\Products P'
+        );
+
+        // returns an array of Product objects
+        return $query->getArrayResult();
+    }
+
 //    /**
 //     * @return Products[] Returns an array of Products objects
 //     */

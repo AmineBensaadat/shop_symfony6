@@ -68,13 +68,14 @@
     <script>
         webix.ui(
                     {
-                        height: 600, 
+                        autoheight:true,
                         view: "datatable",
                          columns:[
-                            { id:"id",	header:"", css:"rank"},
-                            { id:"title",	header:"Film title", fillspace: true },
-                            { id:"year",	header:"Released"},
-                            { id:"votes",	header:"Votes"}
+                            { id:"id", header:"Id", css:"rank"},
+                            { id:"name", header:"Name"},
+                            { id:"qty", header:"Qty"},
+                            { id:"description", header:"description", fillspace: true},
+                            
                         ],
                         autoheight:true,
                         scroll: "auto",
