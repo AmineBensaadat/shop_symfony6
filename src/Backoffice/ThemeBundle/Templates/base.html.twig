@@ -73,12 +73,14 @@
                     { id:"id", header:[ "ID", { content:"numberFilter" } ], css:"rank"},
                     { id:"name", header:[ "Name", { content:"textFilter" } ] },
                     { id:"qty",  header:[ "Qty", { content:"numberFilter" } ]},
-                    { id:"description", header:[ "description", { content:"textFilter" } ], fillspace: true},
+                    { id:"description", header:[ "description", { content:"textFilter" } ], adjust:"data", adjustBatch:50},
                     
                 ],
             select:"cell",
             autoheight:true,
-            scroll:false,
+            scroll:true,
+            scrollY:true,
+            columnWidth:100,
             pager:"pagerA",
             url:"https://127.0.0.1:8000/admin/products/list_products"
             };
