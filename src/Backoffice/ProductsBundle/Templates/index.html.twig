@@ -5,14 +5,28 @@
         <div class="col-xxl-6">
             <h5 class="mb-3">{{ 'products'|trans|capitalize }}</h5>
             <div class="card">
+                <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">All Products</h4>
+                <div>
+                        <button type="button" class="btn btn-soft-secondary btn-sm">
+                            +
+                        </button>
+                        <button type="button" class="btn btn-soft-primary btn-sm" onclick="exportExcel()">
+                            Export Excel
+                        </button>
+                        <button type="button" class="btn btn-soft-secondary btn-sm" onclick="exportPdf()">
+                            Export PDF
+                        </button>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <!-- Tables -->
-                                <div id="mainView"></div>
-                            </div>
-                    </div><!--end row-->    
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <!-- Tables -->
+                            <div id="mainView"></div>
+                        </div>
+                </div><!--end row-->    
                 </div><!-- end card-body -->
             </div><!-- end card -->
         </div><!--end col-->

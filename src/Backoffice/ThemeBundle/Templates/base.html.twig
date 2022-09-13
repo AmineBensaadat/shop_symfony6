@@ -66,12 +66,12 @@
     <!-- Webix files -->
 	<script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
     <script>
-            var grid = {
-            id:"grid",
+            var dt_product = {
+            id:"dt_product",
             view:"datatable",
             columns:[
                     { id:"id", header:[ "ID", { content:"numberFilter" } ], css:"rank"},
-                    { id:"name", header:[ "Name", { content:"textFilter" } ] },
+                    { id:"name", header:[ "Name", { content:"textFilter" } ], template:"<strong>#name#</strong>" },
                     { id:"qty",  header:[ "Qty", { content:"numberFilter" } ]},
                     { id:"description", header:[ "description", { content:"textFilter" } ], adjust:"data", adjustBatch:50},
                     
@@ -99,11 +99,18 @@
                 borderless:true,
                 id:"demo", 
                 type:"clean", rows:[
-                grid,
+                dt_product,
                 pagerA,
                 ]
             });
         });
+        
+        function exportExcel() {
+            webix.toExcel($$("dt_product"));
+        }
+        function exportPdf() {
+            webix.toPDF($$("dt_product"));
+        }
     </script>
 </body>
 
