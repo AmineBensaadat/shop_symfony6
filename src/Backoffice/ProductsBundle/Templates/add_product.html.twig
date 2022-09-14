@@ -1,6 +1,10 @@
 {% extends '@BoTheme/base.html.twig' %}
 
 {% block container %}
+    <!-- Webix files -->
+    {# <link rel="stylesheet" href="../../../bundles/botheme/css/webix/webix.css" type="text/css" charset="utf-8" > #}
+    <link rel="stylesheet" href="https://cdn.webix.com/site/webix.css" type="text/css" charset="utf-8" > 
+    {# <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css"> #}
     <div class="row">
         <div class="col-xxl-6">
             <h5 class="mb-3">{{ 'products'|trans|capitalize }}</h5>
@@ -11,115 +15,45 @@
                 <!-- end card header -->
                 <div class="card-body form-steps">
                     {{ form_start(productForm) }}
-                        <div class="step-arrow-nav mb-4">
-                            <ul class="nav nav-pills custom-nav nav-justified" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button
-                                        class="nav-link active"
-                                        id="steparrow-gen-info-tab"
-                                        data-bs-toggle="pill"
-                                        data-bs-target="#steparrow-gen-info"
-                                        type="button"
-                                        role="tab"
-                                        aria-controls="steparrow-gen-info"
-                                        aria-selected="true"
-                                        data-position="0"
-                                    >
-                                        General
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button
-                                        class="nav-link"
-                                        id="steparrow-description-info-tab"
-                                        data-bs-toggle="pill"
-                                        data-bs-target="#steparrow-description-info"
-                                        type="button"
-                                        role="tab"
-                                        aria-controls="steparrow-description-info"
-                                        aria-selected="false"
-                                        data-position="1"
-                                    >
-                                        Description
-                                    </button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="pills-experience-tab" data-bs-toggle="pill" data-bs-target="#pills-experience" type="button" role="tab" aria-controls="pills-experience" aria-selected="false" data-position="2">
-                                        Finish
-                                    </button>
-                                </li>
-                            </ul>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div>
+                                <label for="product_form_name" class="form-label">Product Name</label>
+                               {{ form_widget(productForm.name) }}
+                            </div>
                         </div>
-
-                        <div class="tab-content">
-                            <div class="tab-pane fade active show" id="steparrow-gen-info" role="tabpanel" aria-labelledby="steparrow-gen-info-tab">
-                                <div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="product_name_input">{{ 'product_name'|trans|capitalize }}</label>
-                                                {{ form_widget(productForm.name) }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="steparrow-gen-info-username-input">User Name</label>
-                                                <input type="text" class="form-control" id="steparrow-gen-info-username-input" placeholder="Enter User Name" />
-                                                <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
-                                            </div>
-                                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body bg-light m-2 p-4">
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <input type="text" class="form-control" placeholder="text" id="cleave-date">
+                                    </div><!-- end col -->
+                                    <div class="col-xl-6">
+                                        <div class="input-group">
+                          
+                                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                                <option selected="">Choose...</option>
+                                                <option value="ean8">ean8</option>
+                                                <option value="ean13">ean13</option>
+                                                <option value="upcA">ean13</option>
+                                            </select>
+                                            <button type="button" class="btn tn-outline-secondary btn-primary btn-animation waves-effect waves-light" data-text="Primary"><span>Genirate Code</span></button>
+                                        </span>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="steparrow-gen-info-password-input">Password</label>
-                                        <input type="password" class="form-control" id="steparrow-gen-info-password-input" placeholder="Enter Password" />
-                                        <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
-                                    </div>
-                                    <div>
-                                        <label class="form-label" for="steparrow-gen-info-confirm-password-input">Confirm Password</label>
-                                        <input type="password" class="form-control" id="steparrow-gen-info-confirm-password-input" placeholder="Enter Confirm Password" />
-                                        <div data-lastpass-icon-root="true" style="position: relative !important; height: 0px !important; width: 0px !important; float: left !important;"></div>
-                                    </div>
+                                    <!-- end col -->
                                 </div>
-                                <div class="d-flex align-items-start gap-3 mt-4">
-                                    <button type="button" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="steparrow-description-info-tab">
-                                        <i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Go to more info
-                                    </button>
+                                <div class="row">
+                                    <div class="col-xl-6" id="barcode_type">
+                                        
+                                    </div>
+                                    <!-- end col -->
+                                    <div class="col-xl-6">
+                                        
+                                    </div><!-- end col -->
                                 </div>
                             </div>
-                            <!-- end tab pane -->
-
-                            <div class="tab-pane fade" id="steparrow-description-info" role="tabpanel" aria-labelledby="steparrow-description-info-tab">
-                                <div>
-                                    <div class="mb-3">
-                                        <label for="formFile" class="form-label">Upload Image</label>
-                                        <input class="form-control" type="file" id="formFile" />
-                                    </div>
-                                    <div>
-                                        <label class="form-label" for="des-info-description-input">Description</label>
-                                        <textarea class="form-control" placeholder="Enter Description" id="des-info-description-input" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-start gap-3 mt-4">
-                                    <button type="button" class="btn btn-light btn-label previestab" data-previous="steparrow-gen-info-tab"><i class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i> Back to General</button>
-                                    <button type="submit" class="btn btn-success btn-label right ms-auto nexttab nexttab" data-nexttab="pills-experience-tab"><i class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Submit</button>
-                                </div>
-                            </div>
-                            <!-- end tab pane -->
-
-                            <div class="tab-pane fade" id="pills-experience" role="tabpanel">
-                                <div class="text-center">
-                                    <div class="avatar-md mt-5 mb-4 mx-auto">
-                                        <div class="avatar-title bg-light text-success display-4 rounded-circle">
-                                            <i class="ri-checkbox-circle-fill"></i>
-                                        </div>
-                                    </div>
-                                    <h5>Well Done !</h5>
-                                    <p class="text-muted">You have Successfully Signed Up</p>
-                                </div>
-                            </div>
-                            <!-- end tab pane -->
                         </div>
-                        <!-- end tab content -->
+                    </div>
                     {{ form_end(productForm) }}
                 </div>
                 <!-- end card body -->
@@ -127,7 +61,26 @@
             <!-- end card -->
         </div><!--end col-->
     </div><!--end row-->
+    <!-- Webix files -->
+	{# <script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script> #}
+    <script src="https://cdn.webix.com/site/webix.js" type="text/javascript" charset="utf-8"></script>
+    {# <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script> #}
+    <script>
+      var codes = {
+        "ean8": "1234567",
+        "ean13": "123456789012",
+        "upcA": "12345678901"
+    };
+    webix.ready(function(){
+        var barcode = webix.ui({
 
-    <!-- form wizard init -->
-    <script src="../../../bundles/Botheme/js/pages/form-wizard.init.js"></script>
+            container:"barcode_type",    
+            view:"barcode",
+            id:"barcode",
+            height: 80,
+            type:"ean13",
+            value:"123456789012"
+        });
+    });
+    </script>
 {% endblock %}
