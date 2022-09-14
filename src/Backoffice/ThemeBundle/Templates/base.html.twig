@@ -63,55 +63,7 @@
     <!-- App js -->
     <script src="../../../bundles/Botheme/js/app.js"></script>
 
-    <!-- Webix files -->
-	<script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-            var dt_product = {
-            id:"dt_product",
-            view:"datatable",
-            columns:[
-                    { id:"id", header:[ "ID", { content:"numberFilter" } ], css:"rank"},
-                    { id:"name", header:[ "Name", { content:"textFilter" } ], template:"<strong>#name#</strong>" },
-                    { id:"qty",  header:[ "Qty", { content:"numberFilter" } ]},
-                    { id:"description", header:[ "description", { content:"textFilter" } ], adjust:"data", adjustBatch:50},
-                    
-                ],
-            select:"cell",
-            autoheight:true,
-            scroll:true,
-            scrollY:true,
-            columnWidth:100,
-            pager:"pagerA",
-            url:"https://127.0.0.1:8000/admin/products/list_products"
-            };
-
-            var pagerA = {
-            view:"pager",
-            id:"pagerA",
-            template:"{common.prev()} {common.pages()} {common.next()}",
-            size:10,
-            group:5
-            };
-
-            webix.ready(function(){
-            webix.ui({
-                container:"mainView",
-                borderless:true,
-                id:"demo", 
-                type:"clean", rows:[
-                dt_product,
-                pagerA,
-                ]
-            });
-        });
-        
-        function exportExcel() {
-            webix.toExcel($$("dt_product"));
-        }
-        function exportPdf() {
-            webix.toPDF($$("dt_product"));
-        }
-    </script>
+   
 </body>
 
 </html>

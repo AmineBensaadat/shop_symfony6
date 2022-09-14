@@ -8,9 +8,9 @@
                 <div class="card-header align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">All Products</h4>
                 <div>
-                        <button type="button" class="btn btn-soft-secondary btn-sm">
+                        <a href="{{ path('Backoffice_ProdutsBundle_add_products') }}" class="btn btn-soft-secondary btn-sm">
                             +
-                        </button>
+                        </a>
                         <button type="button" class="btn btn-soft-primary btn-sm" onclick="exportExcel()">
                             Export Excel
                         </button>
@@ -31,5 +31,54 @@
             </div><!-- end card -->
         </div><!--end col-->
     </div><!--end row-->
-  
+    
+     <!-- Webix files -->
+	<script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+            var dt_product = {
+            id:"dt_product",
+            rowHeight:40,
+            view:"datatable",
+            columns:[
+                    { id:"id", header:[ "ID", { content:"numberFilter" } ], css:"rank"},
+                    { id:"name", header:[ "Name", { content:"textFilter" } ], template:'<div class="d-flex align-items-center"><div class="flex-shrink-0"><img src="../../../bundles/botheme/images/No-Image-Icon.png" alt="" class="avatar-sm "></div><div class="flex-grow-1 ms-3"><p class="card-text"><span class="fw-medium"><b>#name#</b></span></p></div></div>', width:500 },
+                    { id:"qty",  header:[ "Qty", { content:"numberFilter" } ], template: '<span class="badge bg-success ms-1">#qty#</span>'},
+                    { id:"description", header:[ "description", { content:"textFilter" } ], adjust:"data", adjustBatch:50},  
+                ],
+            select:"cell",
+            autoheight:true,
+            scroll:true,
+            scrollY:true,
+            columnWidth:100,
+            pager:"pagerA",
+            url:"https://127.0.0.1:8000/admin/products/list_products"
+            };
+
+            var pagerA = {
+            view:"pager",
+            id:"pagerA",
+            template:"{common.prev()} {common.pages()} {common.next()}",
+            size:10,
+            group:5
+            };
+
+            webix.ready(function(){
+            webix.ui({
+                container:"mainView",
+                borderless:true,
+                id:"demo", 
+                type:"clean", rows:[
+                dt_product,
+                pagerA,
+                ]
+            });
+        });
+        
+        function exportExcel() {
+            webix.toExcel($$("dt_product"));
+        }
+        function exportPdf() {
+            webix.toPDF($$("dt_product"));
+        }
+    </script>
 {% endblock %}
