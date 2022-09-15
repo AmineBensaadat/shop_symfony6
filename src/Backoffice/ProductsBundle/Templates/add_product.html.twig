@@ -6,81 +6,106 @@
     <link rel="stylesheet" href="https://cdn.webix.com/site/webix.css" type="text/css" charset="utf-8" > 
     {# <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css"> #}
     <div class="row">
-        <div class="col-xxl-6">
-            <h5 class="mb-3">{{ 'products'|trans|capitalize }}</h5>
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title mb-0">{{ 'add_new_product'|trans|capitalize }}</h4>
-                </div>
-                <!-- end card header -->
-                <div class="card-body form-steps">
-                    {{ form_start(productForm) }}
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div>
-                                <label for="product_form_name" class="form-label">Product Name</label>
-                               {{ form_widget(productForm.name) }}
-                            </div>
+        <h5 class="mb-3">{{ 'products'|trans|capitalize }}</h5>
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title mb-0">{{ 'add_new_product'|trans|capitalize }}</h4>
+            </div>
+            <!-- end card header -->
+            <div class="card-body form-steps">
+                {{ form_start(productForm) }}
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div>
+                            <label for="product_form_name" class="form-label">Product Name</label>
+                            {{ form_widget(productForm.name) }}
                         </div>
-                        <div class="col-lg-8">
-                            <div class="card-body bg-light m-2 p-4">
-                                <div class="row">
-                                    <div class="col-xl-6">
-                                        <input type="text" class="form-control" placeholder="text" id="cleave-date">
-                                    </div><!-- end col -->
-                                    <div class="col-xl-6">
-                                        <div class="input-group">
-                          
-                                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                                <option selected="">Choose...</option>
-                                                <option value="ean8">ean8</option>
-                                                <option value="ean13">ean13</option>
-                                                <option value="upcA">ean13</option>
-                                            </select>
-                                            <button type="button" class="btn tn-outline-secondary btn-primary btn-animation waves-effect waves-light" data-text="Primary"><span>Genirate Code</span></button>
-                                        </span>
-                                    </div>
-                                    <!-- end col -->
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card-body bg-light m-2 p-4">
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <input type="text" class="form-control" placeholder="text" id="input_ean">
+                                </div><!-- end col -->
+                                <div class="col-xl-6">
+                                    <div class="input-group">
+                        
+                                        <select class="form-select" id="select_ean" aria-label="Example select with button addon">
+                                            <option selected="">Choose...</option>
+                                            <option value="1234567">ean8</option>
+                                            <option value="123456789012">ean13</option>
+                                            <option value="12345678901">upcA</option>
+                                        </select>
+                                        <button type="button" class="btn tn-outline-secondary btn-primary btn-animation waves-effect waves-light" data-text="Primary" id="btn_generate_code"><span>Genirate Code</span></button>
+                                    </span>
                                 </div>
-                                <div class="row">
-                                    <div class="col-xl-6" id="barcode_type">
-                                        
-                                    </div>
-                                    <!-- end col -->
-                                    <div class="col-xl-6">
-                                        
-                                    </div><!-- end col -->
+                                <!-- end col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-6" id="barcode_type">
+                                    
                                 </div>
+                                <!-- end col -->
+                                <div class="col-xl-6">
+                                    
+                                </div><!-- end col -->
                             </div>
                         </div>
                     </div>
-                    {{ form_end(productForm) }}
                 </div>
-                <!-- end card body -->
+                {{ form_end(productForm) }}
             </div>
-            <!-- end card -->
-        </div><!--end col-->
+            <!-- end card body -->
+        </div>
+        <!-- end card -->
     </div><!--end row-->
     <!-- Webix files -->
 	{# <script src="../../../bundles/Botheme/js/webix/webix.js" type="text/javascript" charset="utf-8"></script> #}
     <script src="https://cdn.webix.com/site/webix.js" type="text/javascript" charset="utf-8"></script>
     {# <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script> #}
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
-      var codes = {
-        "ean8": "1234567",
-        "ean13": "123456789012",
-        "upcA": "12345678901"
-    };
     webix.ready(function(){
+        code = "ean13";
+        value = "123456789012";
+        $("#input_ean").val(value);
         var barcode = webix.ui({
 
             container:"barcode_type",    
             view:"barcode",
             id:"barcode",
             height: 80,
-            type:"ean13",
-            value:"123456789012"
+            type: code,
+            value:value,
+            paddingX: 10,
+            color: "#000"
+           
         });
+    
+
+      function showBarcode(code, value){
+            $$("barcode").define("type",code);
+            $$("barcode").setValue(value);
+        }
+
+    $( "#select_ean" ).change(function() {
+        var value = "";
+        var code = "";
+        $( "select option:selected" ).each(function() {
+      value += $( this ).val();
+      code += $( this ).text();
+      $("#input_ean").val(value);
+      showBarcode(code, value);
     });
+
+    $( "#btn_generate_code" ).click(function() {
+        input_value = $("#input_ean").val();
+        showBarcode(code, input_value);
+    });
+    });
+
+    });
+
+       
     </script>
 {% endblock %}

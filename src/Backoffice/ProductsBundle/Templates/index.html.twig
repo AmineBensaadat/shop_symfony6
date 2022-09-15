@@ -4,7 +4,6 @@
 <!-- Webix files -->
 <link rel="stylesheet" href="../../../bundles/botheme/css/webix/webix.css" type="text/css" charset="utf-8" >
     <div class="row">
-        <div class="col-xxl-6">
             <h5 class="mb-3">{{ 'products'|trans|capitalize }}</h5>
             <div class="card">
                 <div class="card-header align-items-center d-flex">
@@ -23,15 +22,12 @@
                 </div>
                 <div class="card-body">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <!-- Tables -->
-                            <div id="mainView"></div>
+                    <div class="col-md-12" id="mainView">
+                            <!-- Table -->
                         </div>
                 </div><!--end row-->    
                 </div><!-- end card-body -->
             </div><!-- end card -->
-        </div><!--end col-->
     </div><!--end row-->
     
     <!-- Webix files -->
@@ -41,19 +37,20 @@
             id:"dt_product",
             rowHeight:40,
             view:"datatable",
+            autowidth:true,
             columns:[
                     { id:"id", header:[ "ID", { content:"numberFilter" } ], css:"rank"},
-                    { id:"name", header:[ "Name", { content:"textFilter" } ], template:'<div class="d-flex align-items-center"><div class="flex-shrink-0"><img src="../../../bundles/botheme/images/No-Image-Icon.png" alt="" class="avatar-sm "></div><div class="flex-grow-1 ms-3"><p class="card-text"><span class="fw-medium"><b>#name#</b></span></p></div></div>', width:500 },
+                    { id:"name", header:[ "Name", { content:"textFilter" } ], template:'<div class="d-flex align-items-center"><div class="flex-shrink-0"><img src="../../../bundles/botheme/images/No-Image-Icon.png" alt="" class="avatar-sm "></div><div class="flex-grow-1 ms-3"><p class="card-text"><span class="fw-medium"><b>#name#</b></span></p></div></div>' },
                     { id:"qty",  header:[ "Qty", { content:"numberFilter" } ], template: '<span class="badge bg-success ms-1">#qty#</span>'},
-                    { id:"description", header:[ "description", { content:"textFilter" } ], adjust:"data", adjustBatch:50},  
+                    { header:[ "rrr", { content:"textFilter" } ], template: '<span class="badge bg-success ms-1">rrrrrr</span>'},
+                    { id:"description", header:[ "description", { content:"textFilter" } ]},  
                 ],
             select:"cell",
             autoheight:true,
-            scroll:true,
+            scroll:false,
             scrollY:true,
-            columnWidth:100,
             pager:"pagerA",
-            url:"https://127.0.0.1:8000/admin/products/list_products"
+            url:"http://127.0.0.1:8000/admin/products/list_products"
             };
 
             var pagerA = {
