@@ -32,6 +32,11 @@ class Products
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ean;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Products
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getEan(): ?string
+    {
+        return $this->ean;
+    }
+
+    public function setEan(?string $ean): self
+    {
+        $this->ean = $ean;
 
         return $this;
     }

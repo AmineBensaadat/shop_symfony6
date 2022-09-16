@@ -1,12 +1,15 @@
 <?php
+namespace App\Backoffice\ProductsBundle\Form;
 
-namespace App\Backoffice\UserBundle\Form;
-
+use App\Entity\ProductImage;
 use App\Entity\Products;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,6 +27,26 @@ class ProductFormType extends AbstractType
                 'attr' => [        
                     'class' => 'form-control',
                     'placeholder' => 'product_name'
+                ],
+            ])->add('ean', TextType::class, [
+                'label' => false,
+                'attr' => [        
+                    'class' => 'form-control',
+                    'placeholder' => 'ean'
+                ],
+            ])
+            ->add('qty', NumberType::class, [
+                'label' => false,
+                'attr' => [        
+                    'class' => 'form-control',
+                    'placeholder' => 'qty'
+                ],
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => false,
+                'attr' => [        
+                    'class' => 'form-control',
+                    'placeholder' => 'description'
                 ],
             ]);
     }
