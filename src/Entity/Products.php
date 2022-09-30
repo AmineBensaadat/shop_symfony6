@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,10 +39,23 @@ class Products
      */
     private $ean;
 
-    public function getId(): ?int
+    /**
+     * @ORM\OneToMany(targetEntity=ProductImages::class, mappedBy="ProductId")
+     */
+    private $productImages;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProductPrices::class, mappedBy="ProductId")
+     */
+    private $productPrices;
+
+    public function __construct()
     {
-        return $this->id;
+        $this->productImages = new ArrayCollection();
+        $this->productPrices = new ArrayCollection();
     }
+
+
 
     public function getName(): ?string
     {
@@ -89,4 +104,67 @@ class Products
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, ProductImages>
+     */
+    public function getProductImages(): Collection
+    {
+        return $this->productImages;
+    }
+
+    public function addProductImage(ProductImages $productImage): self
+    {
+        if (!$this->productImages->contains($productImage)) {
+            $this->productImages[] = $productImage;
+            $productImage->setProductId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductImage(ProductImages $productImage): self
+    {
+        if ($this->productImages->removeElement($productImage)) {
+            // set the owning side to null (unless already changed)
+            if ($productImage->getProductId() === $this) {
+                $productImage->setProductId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductPrices>
+     */
+    public function getProductPrices(): Collection
+    {
+        return $this->productPrices;
+    }
+
+    public function addProductPrice(ProductPrices $productPrice): self
+    {
+        if (!$this->productPrices->contains($productPrice)) {
+            $this->productPrices[] = $productPrice;
+            $productPrice->setProductId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductPrice(ProductPrices $productPrice): self
+    {
+        if ($this->productPrices->removeElement($productPrice)) {
+            // set the owning side to null (unless already changed)
+            if ($productPrice->getProductId() === $this) {
+                $productPrice->setProductId(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
 }

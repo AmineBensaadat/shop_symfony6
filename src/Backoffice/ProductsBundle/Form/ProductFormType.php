@@ -6,6 +6,7 @@ use App\Entity\Products;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -40,6 +41,22 @@ class ProductFormType extends AbstractType
                 'attr' => [        
                     'class' => 'form-control',
                     'placeholder' => 'qty'
+                ],
+            ])
+            // ->add('productPrices', CollectionType::class, [
+            //     'label' => false,
+            //     'entry_type' => TextType::class,
+            //     'attr' => [        
+            //         'class' => 'form-control',
+            //         'placeholder' => 'productPrices'
+            //     ],
+            // ])
+            ->add('productPrices', CollectionType::class, [
+                // each entry in the array will be an "email" field
+                'entry_type' => EmailType::class,
+                // these options are passed to each "email" type
+                'entry_options' => [
+                    'attr' => ['class' => 'email-box'],
                 ],
             ])
             ->add('description', TextareaType::class, [

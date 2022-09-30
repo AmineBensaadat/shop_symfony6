@@ -27,7 +27,7 @@ class IndexController  extends AbstractController {
             return $this->redirectToRoute('Backoffice_ProdutsBundle_index');
         }
         
-        return $this->render('@BoProductsBundle/create_product.html.twig', [
+        return $this->render('@BoProductsBundle/add_product.html.twig', [
             'productForm' => $productForm->createView()]);
     }
 }

@@ -74,7 +74,15 @@
         });
         
         function exportExcel() {
-            webix.toExcel($$("dt_product"));
+            webix.toExcel($$("dt_product"), { 
+                
+                columns:{
+                        "id":true,
+                        "name":{ header:"name", width:250},
+                        "qty":{ header:"qty"},
+                        "description":{ header:"description"}
+                    }
+            });
         }
         function exportPdf() {
             webix.toPDF($$("dt_product"));

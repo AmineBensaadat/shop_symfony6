@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductImageRepository;
+use App\Repository\ProductImagesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ProductImageRepository::class)
+ * @ORM\Entity(repositoryClass=ProductImagesRepository::class)
  */
-class ProductImage
+class ProductImages
 {
     /**
      * @ORM\Id
@@ -23,14 +23,14 @@ class ProductImage
     private $name;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $product_id;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Products::class, inversedBy="productImages")
+     */
+    private $ProductId;
 
     public function getId(): ?int
     {
@@ -49,26 +49,26 @@ class ProductImage
         return $this;
     }
 
-    public function getProductId(): ?int
-    {
-        return $this->product_id;
-    }
-
-    public function setProductId(int $product_id): self
-    {
-        $this->product_id = $product_id;
-
-        return $this;
-    }
-
-    public function getType(): ?string
+    public function gettype(): ?string
     {
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function settype(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getProductId(): ?Products
+    {
+        return $this->ProductId;
+    }
+
+    public function setProductId(?Products $ProductId): self
+    {
+        $this->ProductId = $ProductId;
 
         return $this;
     }
