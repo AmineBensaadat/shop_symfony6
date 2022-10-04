@@ -165,6 +165,10 @@ class Products
         return $this;
     }
 
+    public function getId() {
+        return $this->id;
+       }
+
 
 
 }

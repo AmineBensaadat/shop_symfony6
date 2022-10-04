@@ -12,8 +12,6 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle::class => ['all' => true],
-    
-    // Backoffice Bundles
     App\Backoffice\DashboardBundle\BoDashboardBundle::class => ['all' => true],
     App\Backoffice\ThemeBundle\BoThemeBundle::class => ['all' => true],
     App\Backoffice\SettingsBundle\BoSettingsBundle::class => ['all' => true],
@@ -21,8 +19,5 @@ return [
     App\Backoffice\SecurityBundle\BoSecurityBundle::class => ['all' => true],
     App\Backoffice\UserBundle\BoUserBundle::class => ['all' => true],
     App\Backoffice\ProductsBundle\BoProductsBundle::class => ['all' => true],
-
-    // Front Bundles
     App\Front\ThemeBundle\FrontThemeBundle::class => ['all' => true],
-
 ];

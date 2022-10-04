@@ -131,8 +131,7 @@
                                     <div class="col-lg-4">
                                         <div class="mb-3">
                                             <label class="form-label" for="manufacturer-name-input">Manufacturer Name</label>
-                                            {# <input type="text" class="form-control" id="manufacturer-name-input" placeholder="Enter manufacturer name"> #}
-                                            {{ form_widget(productForm.productImages) }}
+                                            <input type="text" class="form-control" id="manufacturer-name-input" placeholder="Enter manufacturer name">
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -163,8 +162,9 @@
                                         <div class="mb-3">
                                             <label class="form-label" for="product-price-input">Price</label>
                                             <div class="input-group has-validation mb-3">
-                                                <span class="input-group-text" id="product-price-addon">$</span>
-                                                <input type="text" class="form-control" id="product-price-input" placeholder="Enter price" aria-label="Price" aria-describedby="product-price-addon" required>
+                                                <span class="input-group-text" id="product-price-addon">DH</span>
+                                                {{ form_widget(productForm.price) }}
+                                                {# <input type="text" class="form-control" id="product-price-input" placeholder="Enter price" aria-label="Price" aria-describedby="product-price-addon" required> #}
                                                 <div class="invalid-feedback">Please Enter a product price.</div>
                                             </div>
                                             
