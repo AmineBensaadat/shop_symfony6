@@ -47,14 +47,34 @@ class ProductFormType extends AbstractType
                     'placeholder' => 'qty'
                 ],
             ])
-            ->add('price', TextType::class, [
-                'label' => false,
+            // ->add('price', TextType::class, [
+            //     'label' => false,
+            //     'mapped' => false,
+            //     'attr' => [        
+            //         'class' => 'form-control',
+            //         'placeholder' => 'Product Price'
+            //     ],
+            // ])
+
+            ->add('price', CollectionType::class, [
+                // each entry in the array will be an "email" field
+                'entry_type' => TextType::class,
                 'mapped' => false,
-                'attr' => [        
-                    'class' => 'form-control',
-                    'placeholder' => 'Product Price'
+                // these options are passed to each "email" type
+                'entry_options' => [
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'Product Price'
+                    ],
                 ],
             ])
+
+            // ->add('price', CollectionType::class, [
+            //     'mapped' => false,
+            //     'entry_type' => ProductPrices::class
+            // ])
+
+     
             ->add('description', TextareaType::class, [
                 'label' => false,
                 'attr' => [        

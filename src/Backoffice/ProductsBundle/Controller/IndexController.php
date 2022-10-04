@@ -21,18 +21,21 @@ class IndexController  extends AbstractController {
         $productForm->handleRequest($request);
         
         if ($productForm->isSubmitted() && $productForm->isValid()) {
-            
+            $requests_data = $request->request->all();
             // save product table data 
             $em->persist($products);
             $em->flush();
             
-            // save price product data
-            $product_price = $productForm->get('price')->getData();
-            $ProductPrices->setPrice($product_price);
-            $ProductPrices->setProductId($products);
-            $em->persist($ProductPrices);
+            // save prices product data
+            foreach( $requests_data['price'] as $price){
+       
+                $ProductPrices->setPrice((int) $price );
+                $em->persist($ProductPrices);
+                $em->flush();
+                $em->clear(); // Detaches all objects from Doctrine!
+            }
             $em->flush();
-
+            $em->clear();
             return $this->redirectToRoute('Backoffice_ProdutsBundle_index');
         }
         

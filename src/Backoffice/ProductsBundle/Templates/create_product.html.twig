@@ -4,6 +4,19 @@
     {{ include('@BoTheme/partials/page-title.html.twig', {pagetitle: 'Ecommerce', title: 'Create Product'}) }}
     {{ form_start(productForm) }}
         <div class="row">
+
+        {% if not productForm.vars.valid %}
+        <ul>
+            {# Loop through every form item #}
+            {% for child in productForm.children %}
+                {# Display the errors of the form item #}
+                {% for error in child.vars.errors%}
+                    <li>{{error.message}}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
             <div class="col-lg-8">
                 <div class="card">
                     <div class="card-body">
@@ -163,7 +176,9 @@
                                             <label class="form-label" for="product-price-input">Price</label>
                                             <div class="input-group has-validation mb-3">
                                                 <span class="input-group-text" id="product-price-addon">DH</span>
-                                                {{ form_widget(productForm.price) }}
+
+                                                <input class="form-control" type="number" name="price[0]" />
+                                                <input class="form-control" type="number" name="price[1]" />
                                                 {# <input type="text" class="form-control" id="product-price-input" placeholder="Enter price" aria-label="Price" aria-describedby="product-price-addon" required> #}
                                                 <div class="invalid-feedback">Please Enter a product price.</div>
                                             </div>
